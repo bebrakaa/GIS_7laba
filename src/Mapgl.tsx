@@ -70,7 +70,7 @@ export default function Mapgl() {
                     .filter((feature) => {
                         return feature.geometry?.type === 'Point' && feature.properties?.region === 'Калуга';
                     })
-                    .slice(0, 12);
+                    .slice(0, 80);
 
                 labels = labelFeatures.map((feature, index) => {
                     const point = feature.geometry as Point;
@@ -93,6 +93,9 @@ export default function Mapgl() {
                         minZoom: 12,
                         zIndex: index + 1,
                         offset: [0, -24],
+                        labeling: {
+                            type: 'pointLabelsOnly',
+                        },
                         image: {
                             url: `${process.env.PUBLIC_URL}/label-bg.svg`,
                             size: [220, 104],
